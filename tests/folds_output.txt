@@ -1,0 +1,196 @@
+﻿WARNING:tensorflow:From C:\Users\gyesh\Miniconda3\envs\hearing-aid\lib\site-packages\keras\src\losses.py:2976: The name tf.losses.sparse_softmax_cross_entropy is deprecated. Please use tf.compat.v1.losses.sparse_softmax_cross_entropy instead.
+System.Management.Automation.RemoteException
+2026-02-20 14:32:29,303 - INFO - src.train - ============================================================
+2026-02-20 14:32:29,303 - INFO - src.train - Phase 4 ù Step 1: Loading MFCC Training Data
+2026-02-20 14:32:29,303 - INFO - src.train - ============================================================
+2026-02-20 14:32:29,310 - INFO - src.train - Loaded split CSV: data/splits/train.csv (6112 rows)
+2026-02-20 14:32:31,238 - INFO - src.train - Saved LabelEncoder to: models/label_encoder.pkl
+2026-02-20 14:32:31,238 - INFO - src.train - 
+2026-02-20 14:32:31,238 - INFO - src.train - --- Data Summary ---
+2026-02-20 14:32:31,238 - INFO - src.train -   X shape        : (6112, 80)
+2026-02-20 14:32:31,238 - INFO - src.train -   y shape        : (6112,)
+2026-02-20 14:32:31,239 - INFO - src.train -   X dtype        : float32
+2026-02-20 14:32:31,239 - INFO - src.train -   Num classes    : 10
+2026-02-20 14:32:31,239 - INFO - src.train -   Missing files  : 0
+2026-02-20 14:32:31,239 - INFO - src.train - 
+2026-02-20 14:32:31,239 - INFO - src.train - --- Class Distribution ---
+2026-02-20 14:32:31,239 - INFO - src.train -   air_conditioner      :   700  (11.5%)
+2026-02-20 14:32:31,239 - INFO - src.train -   car_horn             :   300  (4.9%)
+2026-02-20 14:32:31,239 - INFO - src.train -   children_playing     :   700  (11.5%)
+2026-02-20 14:32:31,239 - INFO - src.train -   dog_bark             :   700  (11.5%)
+2026-02-20 14:32:31,239 - INFO - src.train -   drilling             :   700  (11.5%)
+2026-02-20 14:32:31,239 - INFO - src.train -   engine_idling        :   700  (11.5%)
+2026-02-20 14:32:31,239 - INFO - src.train -   gun_shot             :   262  (4.3%)
+2026-02-20 14:32:31,239 - INFO - src.train -   jackhammer           :   700  (11.5%)
+2026-02-20 14:32:31,239 - INFO - src.train -   siren                :   650  (10.6%)
+2026-02-20 14:32:31,239 - INFO - src.train -   street_music         :   700  (11.5%)
+2026-02-20 14:32:31,239 - INFO - src.train - 
+2026-02-20 14:32:31,240 - INFO - src.train - Step 1 complete. Data is ready for training.
+
+============================================================
+Phase 4 - Stage 2: StratifiedKFold Validation
+============================================================
+
+===== FOLD 1 =====
+Train size: 5500
+Validation size: 612
+Validation class distribution:
+  Class 0 (air_conditioner     ): 70
+  Class 1 (car_horn            ): 30
+  Class 2 (children_playing    ): 70
+  Class 3 (dog_bark            ): 70
+  Class 4 (drilling            ): 70
+  Class 5 (engine_idling       ): 70
+  Class 6 (gun_shot            ): 27
+  Class 7 (jackhammer          ): 70
+  Class 8 (siren               ): 65
+  Class 9 (street_music        ): 70
+  >> FOLD PASSED
+
+===== FOLD 2 =====
+Train size: 5500
+Validation size: 612
+Validation class distribution:
+  Class 0 (air_conditioner     ): 70
+  Class 1 (car_horn            ): 30
+  Class 2 (children_playing    ): 70
+  Class 3 (dog_bark            ): 70
+  Class 4 (drilling            ): 70
+  Class 5 (engine_idling       ): 70
+  Class 6 (gun_shot            ): 27
+  Class 7 (jackhammer          ): 70
+  Class 8 (siren               ): 65
+  Class 9 (street_music        ): 70
+  >> FOLD PASSED
+
+===== FOLD 3 =====
+Train size: 5501
+Validation size: 611
+Validation class distribution:
+  Class 0 (air_conditioner     ): 70
+  Class 1 (car_horn            ): 30
+  Class 2 (children_playing    ): 70
+  Class 3 (dog_bark            ): 70
+  Class 4 (drilling            ): 70
+  Class 5 (engine_idling       ): 70
+  Class 6 (gun_shot            ): 26
+  Class 7 (jackhammer          ): 70
+  Class 8 (siren               ): 65
+  Class 9 (street_music        ): 70
+  >> FOLD PASSED
+
+===== FOLD 4 =====
+Train size: 5501
+Validation size: 611
+Validation class distribution:
+  Class 0 (air_conditioner     ): 70
+  Class 1 (car_horn            ): 30
+  Class 2 (children_playing    ): 70
+  Class 3 (dog_bark            ): 70
+  Class 4 (drilling            ): 70
+  Class 5 (engine_idling       ): 70
+  Class 6 (gun_shot            ): 26
+  Class 7 (jackhammer          ): 70
+  Class 8 (siren               ): 65
+  Class 9 (street_music        ): 70
+  >> FOLD PASSED
+
+===== FOLD 5 =====
+Train size: 5501
+Validation size: 611
+Validation class distribution:
+  Class 0 (air_conditioner     ): 70
+  Class 1 (car_horn            ): 30
+  Class 2 (children_playing    ): 70
+  Class 3 (dog_bark            ): 70
+  Class 4 (drilling            ): 70
+  Class 5 (engine_idling       ): 70
+  Class 6 (gun_shot            ): 26
+  Class 7 (jackhammer          ): 70
+  Class 8 (siren               ): 65
+  Class 9 (street_music        ): 70
+  >> FOLD PASSED
+
+===== FOLD 6 =====
+Train size: 5501
+Validation size: 611
+Validation class distribution:
+  Class 0 (air_conditioner     ): 70
+  Class 1 (car_horn            ): 30
+  Class 2 (children_playing    ): 70
+  Class 3 (dog_bark            ): 70
+  Class 4 (drilling            ): 70
+  Class 5 (engine_idling       ): 70
+  Class 6 (gun_shot            ): 26
+  Class 7 (jackhammer          ): 70
+  Class 8 (siren               ): 65
+  Class 9 (street_music        ): 70
+  >> FOLD PASSED
+
+===== FOLD 7 =====
+Train size: 5501
+Validation size: 611
+Validation class distribution:
+  Class 0 (air_conditioner     ): 70
+  Class 1 (car_horn            ): 30
+  Class 2 (children_playing    ): 70
+  Class 3 (dog_bark            ): 70
+  Class 4 (drilling            ): 70
+  Class 5 (engine_idling       ): 70
+  Class 6 (gun_shot            ): 26
+  Class 7 (jackhammer          ): 70
+  Class 8 (siren               ): 65
+  Class 9 (street_music        ): 70
+  >> FOLD PASSED
+
+===== FOLD 8 =====
+Train size: 5501
+Validation size: 611
+Validation class distribution:
+  Class 0 (air_conditioner     ): 70
+  Class 1 (car_horn            ): 30
+  Class 2 (children_playing    ): 70
+  Class 3 (dog_bark            ): 70
+  Class 4 (drilling            ): 70
+  Class 5 (engine_idling       ): 70
+  Class 6 (gun_shot            ): 26
+  Class 7 (jackhammer          ): 70
+  Class 8 (siren               ): 65
+  Class 9 (street_music        ): 70
+  >> FOLD PASSED
+
+===== FOLD 9 =====
+Train size: 5501
+Validation size: 611
+Validation class distribution:
+  Class 0 (air_conditioner     ): 70
+  Class 1 (car_horn            ): 30
+  Class 2 (children_playing    ): 70
+  Class 3 (dog_bark            ): 70
+  Class 4 (drilling            ): 70
+  Class 5 (engine_idling       ): 70
+  Class 6 (gun_shot            ): 26
+  Class 7 (jackhammer          ): 70
+  Class 8 (siren               ): 65
+  Class 9 (street_music        ): 70
+  >> FOLD PASSED
+
+===== FOLD 10 =====
+Train size: 5501
+Validation size: 611
+Validation class distribution:
+  Class 0 (air_conditioner     ): 70
+  Class 1 (car_horn            ): 30
+  Class 2 (children_playing    ): 70
+  Class 3 (dog_bark            ): 70
+  Class 4 (drilling            ): 70
+  Class 5 (engine_idling       ): 70
+  Class 6 (gun_shot            ): 26
+  Class 7 (jackhammer          ): 70
+  Class 8 (siren               ): 65
+  Class 9 (street_music        ): 70
+  >> FOLD PASSED
+
+============================================================
+ALL 10 FOLDS PASSED - Cross-validation structure is valid.
+============================================================

@@ -1,0 +1,57 @@
+# ─── Python cache ────────────────────────────────────────────
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+
+# ─── Jupyter ─────────────────────────────────────────────────
+.ipynb_checkpoints/
+*.ipynb_checkpoints
+
+# ─── Environments ────────────────────────────────────────────
+.env
+.venv
+venv/
+env/
+*.env
+
+# ─── Datasets (large — download separately) ──────────────────
+data/UrbanSound8K/
+data/ESC50/
+data/UrbanSound8K.tar.gz
+data/ESC50.zip
+
+# ─── Training feature caches (regenerate from data) ──────────
+features/mfcc/
+features/mfcc_v2/
+features/mel/
+features/mel_v2/
+features/waveform/
+features/yamnet_embeddings/
+# NOTE: features/yamnet_v2/mu.npy and sig.npy ARE committed (needed for inference)
+
+# ─── OS junk ─────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ─── IDE ─────────────────────────────────────────────────────
+.vscode/
+.idea/
+*.sublime-workspace
+
+# ─── Logs (transient) ────────────────────────────────────────
+logs/*.log
+
+# ─── TensorBoard ─────────────────────────────────────────────
+events.out.tfevents.*
+runs/
+
+# ─── Temporary files ─────────────────────────────────────────
+*.tmp
+*.bak
+temp_*.csv
+
+# ─── Node (just in case) ─────────────────────────────────────
+node_modules/

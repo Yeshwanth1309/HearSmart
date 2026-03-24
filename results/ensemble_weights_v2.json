@@ -1,0 +1,19 @@
+{
+  "weights": {
+    "cnn": 0.5297309167629208,
+    "yamnet": 0.4702690832370793
+  },
+  "val_accuracy": 0.9366412213740458,
+  "test_accuracy": 0.9236641221374046,
+  "test_macro_f1": 0.9265016086538649,
+  "models_used": [
+    "cnn",
+    "yamnet"
+  ],
+  "models_removed": [
+    "rf",
+    "svm",
+    "xgb"
+  ],
+  "reason": "RF/SVM/XGB use MFCC-only features \u2014 poor generalization to real-world audio"
+}

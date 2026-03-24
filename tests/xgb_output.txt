@@ -1,0 +1,124 @@
+﻿WARNING:tensorflow:From C:\Users\gyesh\Miniconda3\envs\hearing-aid\lib\site-packages\keras\src\losses.py:2976: The name tf.losses.sparse_softmax_cross_entropy is deprecated. Please use tf.compat.v1.losses.sparse_softmax_cross_entropy instead.
+System.Management.Automation.RemoteException
+2026-02-22 21:55:42,311 - INFO - src.train - ============================================================
+2026-02-22 21:55:42,311 - INFO - src.train - Phase 4 ù Step 1: Loading MFCC Training Data
+2026-02-22 21:55:42,311 - INFO - src.train - ============================================================
+2026-02-22 21:55:42,319 - INFO - src.train - Loaded split CSV: data/splits/train.csv (6112 rows)
+2026-02-22 21:55:44,363 - INFO - src.train - Saved LabelEncoder to: models/label_encoder.pkl
+2026-02-22 21:55:44,363 - INFO - src.train - 
+2026-02-22 21:55:44,363 - INFO - src.train - --- Data Summary ---
+2026-02-22 21:55:44,363 - INFO - src.train -   X shape        : (6112, 80)
+2026-02-22 21:55:44,363 - INFO - src.train -   y shape        : (6112,)
+2026-02-22 21:55:44,363 - INFO - src.train -   X dtype        : float32
+2026-02-22 21:55:44,363 - INFO - src.train -   Num classes    : 10
+2026-02-22 21:55:44,363 - INFO - src.train -   Missing files  : 0
+2026-02-22 21:55:44,363 - INFO - src.train - 
+2026-02-22 21:55:44,363 - INFO - src.train - --- Class Distribution ---
+2026-02-22 21:55:44,363 - INFO - src.train -   air_conditioner      :   700  (11.5%)
+2026-02-22 21:55:44,363 - INFO - src.train -   car_horn             :   300  (4.9%)
+2026-02-22 21:55:44,364 - INFO - src.train -   children_playing     :   700  (11.5%)
+2026-02-22 21:55:44,364 - INFO - src.train -   dog_bark             :   700  (11.5%)
+2026-02-22 21:55:44,364 - INFO - src.train -   drilling             :   700  (11.5%)
+2026-02-22 21:55:44,364 - INFO - src.train -   engine_idling        :   700  (11.5%)
+2026-02-22 21:55:44,364 - INFO - src.train -   gun_shot             :   262  (4.3%)
+2026-02-22 21:55:44,364 - INFO - src.train -   jackhammer           :   700  (11.5%)
+2026-02-22 21:55:44,364 - INFO - src.train -   siren                :   650  (10.6%)
+2026-02-22 21:55:44,364 - INFO - src.train -   street_music         :   700  (11.5%)
+2026-02-22 21:55:44,364 - INFO - src.train - 
+2026-02-22 21:55:44,364 - INFO - src.train - Step 1 complete. Data is ready for training.
+
+============================================================
+Phase 4 - Stage 6: XGBoost (Efficient & Thermal-Safe)
+============================================================
+Grid: 8 combinations x 10 folds = 80 fits
+
+Starting grid search...
+Fitting 10 folds for each of 8 candidates, totalling 80 fits
+
+============================================================
+===== XGBOOST RESULTS =====
+============================================================
+Best Macro F1: 0.8082
+Best Params:   {'learning_rate': 0.1, 'max_depth': 6, 'n_estimators': 300}
+============================================================
+Model saved to models/xgboost.json
+[CV] END ..learning_rate=0.05, max_depth=4, n_estimators=200; total time=   7.3s
+[CV] END ..learning_rate=0.05, max_depth=4, n_estimators=200; total time=   5.4s
+[CV] END ..learning_rate=0.05, max_depth=4, n_estimators=200; total time=   5.4s
+[CV] END ..learning_rate=0.05, max_depth=4, n_estimators=200; total time=   5.5s
+[CV] END ..learning_rate=0.05, max_depth=4, n_estimators=200; total time=   5.6s
+[CV] END ..learning_rate=0.05, max_depth=4, n_estimators=300; total time=   8.1s
+[CV] END ..learning_rate=0.05, max_depth=4, n_estimators=300; total time=   7.9s
+[CV] END ..learning_rate=0.05, max_depth=4, n_estimators=300; total time=   8.2s
+[CV] END ..learning_rate=0.05, max_depth=4, n_estimators=300; total time=   8.2s
+[CV] END ..learning_rate=0.05, max_depth=4, n_estimators=300; total time=   8.2s
+[CV] END ..learning_rate=0.05, max_depth=6, n_estimators=200; total time=  13.7s
+[CV] END ..learning_rate=0.05, max_depth=6, n_estimators=200; total time=  15.5s
+[CV] END ..learning_rate=0.05, max_depth=6, n_estimators=200; total time=  16.9s
+[CV] END ..learning_rate=0.05, max_depth=6, n_estimators=200; total time=  13.6s
+[CV] END ..learning_rate=0.05, max_depth=6, n_estimators=200; total time=  13.5s
+[CV] END ..learning_rate=0.05, max_depth=6, n_estimators=300; total time=  18.7s
+[CV] END ..learning_rate=0.05, max_depth=6, n_estimators=300; total time=  22.4s
+[CV] END ..learning_rate=0.05, max_depth=6, n_estimators=300; total time=  23.5s
+[CV] END ..learning_rate=0.05, max_depth=6, n_estimators=300; total time=  24.7s
+[CV] END ..learning_rate=0.05, max_depth=6, n_estimators=300; total time=  20.4s
+[CV] END ...learning_rate=0.1, max_depth=4, n_estimators=200; total time=   6.4s
+[CV] END ...learning_rate=0.1, max_depth=4, n_estimators=200; total time=   6.9s
+[CV] END ...learning_rate=0.1, max_depth=4, n_estimators=200; total time=   6.6s
+[CV] END ...learning_rate=0.1, max_depth=4, n_estimators=200; total time=   6.6s
+[CV] END ...learning_rate=0.1, max_depth=4, n_estimators=200; total time=   6.9s
+[CV] END ...learning_rate=0.1, max_depth=4, n_estimators=300; total time=   9.8s
+[CV] END ...learning_rate=0.1, max_depth=4, n_estimators=300; total time=  10.0s
+[CV] END ...learning_rate=0.1, max_depth=4, n_estimators=300; total time=   7.6s
+[CV] END ...learning_rate=0.1, max_depth=4, n_estimators=300; total time=   7.8s
+[CV] END ...learning_rate=0.1, max_depth=4, n_estimators=300; total time=   7.8s
+[CV] END ...learning_rate=0.1, max_depth=6, n_estimators=200; total time=  12.9s
+[CV] END ...learning_rate=0.1, max_depth=6, n_estimators=200; total time=  15.0s
+[CV] END ...learning_rate=0.1, max_depth=6, n_estimators=200; total time=  13.9s
+[CV] END ...learning_rate=0.1, max_depth=6, n_estimators=200; total time=  15.1s
+[CV] END ...learning_rate=0.1, max_depth=6, n_estimators=200; total time=  15.1s
+[CV] END ...learning_rate=0.1, max_depth=6, n_estimators=300; total time=  18.7s
+[CV] END ...learning_rate=0.1, max_depth=6, n_estimators=300; total time=  18.2s
+[CV] END ...learning_rate=0.1, max_depth=6, n_estimators=300; total time=  17.8s
+[CV] END ...learning_rate=0.1, max_depth=6, n_estimators=300; total time=  18.0s
+[CV] END ...learning_rate=0.1, max_depth=6, n_estimators=300; total time=  18.1s
+[CV] END ..learning_rate=0.05, max_depth=4, n_estimators=200; total time=   7.3s
+[CV] END ..learning_rate=0.05, max_depth=4, n_estimators=200; total time=   5.4s
+[CV] END ..learning_rate=0.05, max_depth=4, n_estimators=200; total time=   5.6s
+[CV] END ..learning_rate=0.05, max_depth=4, n_estimators=200; total time=   5.5s
+[CV] END ..learning_rate=0.05, max_depth=4, n_estimators=200; total time=   5.6s
+[CV] END ..learning_rate=0.05, max_depth=4, n_estimators=300; total time=   8.1s
+[CV] END ..learning_rate=0.05, max_depth=4, n_estimators=300; total time=   8.0s
+[CV] END ..learning_rate=0.05, max_depth=4, n_estimators=300; total time=   8.2s
+[CV] END ..learning_rate=0.05, max_depth=4, n_estimators=300; total time=   8.2s
+[CV] END ..learning_rate=0.05, max_depth=4, n_estimators=300; total time=   8.1s
+[CV] END ..learning_rate=0.05, max_depth=6, n_estimators=200; total time=  13.6s
+[CV] END ..learning_rate=0.05, max_depth=6, n_estimators=200; total time=  15.7s
+[CV] END ..learning_rate=0.05, max_depth=6, n_estimators=200; total time=  17.2s
+[CV] END ..learning_rate=0.05, max_depth=6, n_estimators=200; total time=  13.6s
+[CV] END ..learning_rate=0.05, max_depth=6, n_estimators=200; total time=  13.5s
+[CV] END ..learning_rate=0.05, max_depth=6, n_estimators=300; total time=  18.6s
+[CV] END ..learning_rate=0.05, max_depth=6, n_estimators=300; total time=  22.4s
+[CV] END ..learning_rate=0.05, max_depth=6, n_estimators=300; total time=  23.2s
+[CV] END ..learning_rate=0.05, max_depth=6, n_estimators=300; total time=  24.9s
+[CV] END ..learning_rate=0.05, max_depth=6, n_estimators=300; total time=  20.0s
+[CV] END ...learning_rate=0.1, max_depth=4, n_estimators=200; total time=   6.4s
+[CV] END ...learning_rate=0.1, max_depth=4, n_estimators=200; total time=   6.7s
+[CV] END ...learning_rate=0.1, max_depth=4, n_estimators=200; total time=   6.7s
+[CV] END ...learning_rate=0.1, max_depth=4, n_estimators=200; total time=   6.6s
+[CV] END ...learning_rate=0.1, max_depth=4, n_estimators=200; total time=   7.0s
+[CV] END ...learning_rate=0.1, max_depth=4, n_estimators=300; total time=  10.0s
+[CV] END ...learning_rate=0.1, max_depth=4, n_estimators=300; total time=   9.9s
+[CV] END ...learning_rate=0.1, max_depth=4, n_estimators=300; total time=   7.6s
+[CV] END ...learning_rate=0.1, max_depth=4, n_estimators=300; total time=   7.7s
+[CV] END ...learning_rate=0.1, max_depth=4, n_estimators=300; total time=   7.9s
+[CV] END ...learning_rate=0.1, max_depth=6, n_estimators=200; total time=  12.9s
+[CV] END ...learning_rate=0.1, max_depth=6, n_estimators=200; total time=  15.1s
+[CV] END ...learning_rate=0.1, max_depth=6, n_estimators=200; total time=  14.0s
+[CV] END ...learning_rate=0.1, max_depth=6, n_estimators=200; total time=  15.2s
+[CV] END ...learning_rate=0.1, max_depth=6, n_estimators=200; total time=  14.8s
+[CV] END ...learning_rate=0.1, max_depth=6, n_estimators=300; total time=  18.6s
+[CV] END ...learning_rate=0.1, max_depth=6, n_estimators=300; total time=  18.5s
+[CV] END ...learning_rate=0.1, max_depth=6, n_estimators=300; total time=  18.2s
+[CV] END ...learning_rate=0.1, max_depth=6, n_estimators=300; total time=  18.2s
+[CV] END ...learning_rate=0.1, max_depth=6, n_estimators=300; total time=  17.6s

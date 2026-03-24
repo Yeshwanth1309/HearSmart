@@ -1,0 +1,28 @@
+{
+  "accuracy": 0.950382,
+  "macro_f1": 0.954791,
+  "target_95_met": true,
+  "best_xgb_cfg": {
+    "n_estimators": 800,
+    "max_depth": 6,
+    "lr": 0.03,
+    "subsample": 0.9,
+    "colsample": 0.7,
+    "test_acc": 0.950381679389313,
+    "test_f1": 0.9547905078194295
+  },
+  "blend_alpha": 0.5100000000000001,
+  "improvement_over_baseline": 1.378,
+  "per_class_f1": {
+    "air_conditioner": 0.944262,
+    "car_horn": 0.968254,
+    "children_playing": 0.921502,
+    "dog_bark": 0.940789,
+    "drilling": 0.946309,
+    "engine_idling": 0.950495,
+    "gun_shot": 1.0,
+    "jackhammer": 0.950495,
+    "siren": 0.985401,
+    "street_music": 0.940397
+  }
+}

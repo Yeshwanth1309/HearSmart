@@ -1,0 +1,17 @@
+{
+  "version": "2.0",
+  "strategy": "adaptive",
+  "base_weights": {
+    "rf": 0.02518,
+    "svm": 0.242266,
+    "xgb": 0.256823,
+    "cnn": 0.170578,
+    "yamnet": 0.305154
+  },
+  "yamnet_boost_threshold": 0.4,
+  "safety_boost": 0.05,
+  "test_accuracy": 0.9259541984732824,
+  "test_macro_f1": 0.9287121947436509,
+  "improvement_over_flat": "+-1.07pp",
+  "description": "Adaptive weighting: when YAMNet is confident (>40%), its weight is boosted and MFCC models are reduced. Safety classes get extra boost (5%) when detected by YAMNet."
+}

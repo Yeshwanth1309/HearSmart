@@ -1,0 +1,216 @@
+{
+  "phase": 7,
+  "title": "Evaluation Framework \u2014 Context-Aware Hearing Aid System",
+  "model_summary": {
+    "rf": {
+      "accuracy": 0.815267,
+      "macro_f1": 0.814312,
+      "weighted_f1": 0.81499,
+      "min_class_f1": 0.736486,
+      "max_class_f1": 0.883721,
+      "worst_class": "children_playing",
+      "best_class": "siren",
+      "bootstrap_ci": {
+        "mean": 0.814053,
+        "ci_lower": 0.792315,
+        "ci_upper": 0.836049,
+        "std": 0.010737
+      }
+    },
+    "svm": {
+      "accuracy": 0.891603,
+      "macro_f1": 0.890355,
+      "weighted_f1": 0.891065,
+      "min_class_f1": 0.835526,
+      "max_class_f1": 0.936877,
+      "worst_class": "children_playing",
+      "best_class": "engine_idling",
+      "bootstrap_ci": {
+        "mean": 0.890116,
+        "ci_lower": 0.872858,
+        "ci_upper": 0.907921,
+        "std": 0.009323
+      }
+    },
+    "xgb": {
+      "accuracy": 0.867176,
+      "macro_f1": 0.867434,
+      "weighted_f1": 0.86703,
+      "min_class_f1": 0.8,
+      "max_class_f1": 0.922509,
+      "worst_class": "children_playing",
+      "best_class": "siren",
+      "bootstrap_ci": {
+        "mean": 0.867233,
+        "ci_lower": 0.84716,
+        "ci_upper": 0.884561,
+        "std": 0.009618
+      }
+    },
+    "cnn": {
+      "accuracy": 0.876336,
+      "macro_f1": 0.880973,
+      "weighted_f1": 0.876069,
+      "min_class_f1": 0.839506,
+      "max_class_f1": 0.958042,
+      "worst_class": "children_playing",
+      "best_class": "siren",
+      "bootstrap_ci": {
+        "mean": 0.88075,
+        "ci_lower": 0.863075,
+        "ci_upper": 0.89886,
+        "std": 0.009092
+      }
+    },
+    "yamnet": {
+      "accuracy": 0.882443,
+      "macro_f1": 0.881499,
+      "weighted_f1": 0.88225,
+      "min_class_f1": 0.777778,
+      "max_class_f1": 0.956522,
+      "worst_class": "car_horn",
+      "best_class": "gun_shot",
+      "bootstrap_ci": {
+        "mean": 0.881061,
+        "ci_lower": 0.862882,
+        "ci_upper": 0.899166,
+        "std": 0.009259
+      }
+    },
+    "ensemble": {
+      "accuracy": 0.936641,
+      "macro_f1": 0.939661,
+      "weighted_f1": 0.936689,
+      "min_class_f1": 0.907895,
+      "max_class_f1": 0.974359,
+      "worst_class": "children_playing",
+      "best_class": "siren",
+      "bootstrap_ci": {
+        "mean": 0.939579,
+        "ci_lower": 0.927072,
+        "ci_upper": 0.951964,
+        "std": 0.006448
+      }
+    }
+  },
+  "ablation_study": {
+    "Full Ensemble": {
+      "accuracy": 0.936641,
+      "macro_f1": 0.939661,
+      "models_used": [
+        "rf",
+        "svm",
+        "xgb",
+        "cnn",
+        "yamnet"
+      ]
+    },
+    "Drop Random Forest": {
+      "accuracy": 0.936641,
+      "macro_f1": 0.939661,
+      "models_used": [
+        "svm",
+        "xgb",
+        "cnn",
+        "yamnet"
+      ]
+    },
+    "Drop SVM": {
+      "accuracy": 0.928244,
+      "macro_f1": 0.932358,
+      "models_used": [
+        "rf",
+        "xgb",
+        "cnn",
+        "yamnet"
+      ]
+    },
+    "Drop XGBoost": {
+      "accuracy": 0.938168,
+      "macro_f1": 0.941617,
+      "models_used": [
+        "rf",
+        "svm",
+        "cnn",
+        "yamnet"
+      ]
+    },
+    "Drop CNN": {
+      "accuracy": 0.935878,
+      "macro_f1": 0.936742,
+      "models_used": [
+        "rf",
+        "svm",
+        "xgb",
+        "yamnet"
+      ]
+    },
+    "Drop YAMNet": {
+      "accuracy": 0.912977,
+      "macro_f1": 0.916079,
+      "models_used": [
+        "rf",
+        "svm",
+        "xgb",
+        "cnn"
+      ]
+    },
+    "Deep Only (CNN+YAMNet)": {
+      "accuracy": 0.910687,
+      "macro_f1": 0.914367,
+      "models_used": [
+        "cnn",
+        "yamnet"
+      ]
+    },
+    "Traditional Only (RF+SVM+XGB)": {
+      "accuracy": 0.88855,
+      "macro_f1": 0.890918,
+      "models_used": [
+        "rf",
+        "svm",
+        "xgb"
+      ]
+    },
+    "Top 3 (SVM+XGB+YAMNet)": {
+      "accuracy": 0.935878,
+      "macro_f1": 0.936742,
+      "models_used": [
+        "svm",
+        "xgb",
+        "yamnet"
+      ]
+    },
+    "Top 2 (XGB+YAMNet)": {
+      "accuracy": 0.926718,
+      "macro_f1": 0.92841,
+      "models_used": [
+        "xgb",
+        "yamnet"
+      ]
+    }
+  },
+  "prd_targets": {
+    "macro_f1_85pct": true,
+    "accuracy_90pct": true
+  },
+  "figures": {
+    "confusion_matrices": [
+      "results\\figures\\confusion_matrix_rf.png",
+      "results\\figures\\confusion_matrix_svm.png",
+      "results\\figures\\confusion_matrix_xgb.png",
+      "results\\figures\\confusion_matrix_cnn.png",
+      "results\\figures\\confusion_matrix_yamnet.png",
+      "results\\figures\\confusion_matrix_ensemble.png"
+    ],
+    "per_class_f1": "results\\figures\\per_class_f1_comparison.png",
+    "training_curves": [
+      "results\\figures\\training_curves_cnn.png",
+      "results\\figures\\training_curves_yamnet.png"
+    ],
+    "bootstrap_ci": "results\\figures\\bootstrap_ci.png",
+    "ablation_study": "results\\figures\\ablation_study.png",
+    "radar_chart": "results\\figures\\radar_chart.png",
+    "accuracy_vs_size": "results\\figures\\accuracy_vs_size.png"
+  }
+}

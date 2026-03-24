@@ -1,0 +1,155 @@
+{
+  "version": "1.0.0",
+  "description": "Hearing Aid Recommendation Engine \u2014 4-Tier Rule Set",
+  "thresholds": {
+    "low_confidence": 0.35,
+    "high_confidence": 0.7,
+    "safety_override": 0.45
+  },
+  "safety_classes": [
+    "gun_shot",
+    "car_horn",
+    "siren"
+  ],
+  "conservative_defaults": {
+    "volume": 5,
+    "noise_reduction": "Medium",
+    "directionality": "Omnidirectional",
+    "speech_enhancement": true
+  },
+  "tier1_rules": {
+    "air_conditioner": {
+      "volume": 5,
+      "noise_reduction": "High",
+      "directionality": "Omnidirectional",
+      "speech_enhancement": true,
+      "reasoning": "Continuous low-frequency background noise detected. High noise reduction filters the hum; speech enhancement preserves conversation clarity."
+    },
+    "car_horn": {
+      "volume": 3,
+      "noise_reduction": "High",
+      "directionality": "Adaptive",
+      "speech_enhancement": false,
+      "reasoning": "Safety-critical alert sound (car horn). Volume reduced to prevent discomfort; adaptive microphone steers toward the source; noise reduction high to suppress background traffic."
+    },
+    "children_playing": {
+      "volume": 6,
+      "noise_reduction": "Medium",
+      "directionality": "Omnidirectional",
+      "speech_enhancement": true,
+      "reasoning": "Lively, multi-directional play environment. Omnidirectional mode captures all voices; medium noise reduction preserves natural ambiance while reducing harshness."
+    },
+    "dog_bark": {
+      "volume": 5,
+      "noise_reduction": "Medium",
+      "directionality": "Adaptive",
+      "speech_enhancement": false,
+      "reasoning": "Intermittent animal sound. Adaptive microphone localises the source; medium noise reduction balances bark attenuation with environmental awareness."
+    },
+    "drilling": {
+      "volume": 3,
+      "noise_reduction": "High",
+      "directionality": "Directional",
+      "speech_enhancement": true,
+      "reasoning": "High-intensity construction noise. Volume reduced to protect hearing; directional mode focuses on speech in front; maximum noise reduction suppresses drill harmonics."
+    },
+    "engine_idling": {
+      "volume": 5,
+      "noise_reduction": "High",
+      "directionality": "Omnidirectional",
+      "speech_enhancement": false,
+      "reasoning": "Steady engine background noise. High noise reduction on omnidirectional mode effectively suppresses the constant low-frequency engine rumble."
+    },
+    "gun_shot": {
+      "volume": 2,
+      "noise_reduction": "High",
+      "directionality": "Adaptive",
+      "speech_enhancement": false,
+      "reasoning": "\u26a0 SAFETY: Gunshot detected. Volume minimised to prevent acoustic trauma; adaptive microphone enables spatial awareness; high noise reduction protects from follow-on impulse noise."
+    },
+    "jackhammer": {
+      "volume": 3,
+      "noise_reduction": "High",
+      "directionality": "Directional",
+      "speech_enhancement": true,
+      "reasoning": "Intense impulsive construction noise. Same profile as drilling \u2014 directional focus for speech, maximum noise reduction, reduced volume to prevent fatigue."
+    },
+    "siren": {
+      "volume": 4,
+      "noise_reduction": "High",
+      "directionality": "Adaptive",
+      "speech_enhancement": false,
+      "reasoning": "\u26a0 SAFETY: Emergency siren detected. Volume moderated to allow natural awareness without discomfort; adaptive mode tracks the siren direction for situational awareness."
+    },
+    "street_music": {
+      "volume": 7,
+      "noise_reduction": "Low",
+      "directionality": "Omnidirectional",
+      "speech_enhancement": false,
+      "reasoning": "Outdoor entertainment environment. Higher volume and low noise reduction preserves the full musical quality; omnidirectional captures the natural soundscape."
+    }
+  },
+  "tier2_description": "If confidence < low_confidence_threshold and not a safety override, apply conservative defaults: volume=5, noise_reduction=Medium, directionality=Omnidirectional, speech_enhancement=True.",
+  "tier3_rules": {
+    "high_snr": {
+      "condition": "snr_db > 20",
+      "action": "Reduce noise_reduction by one level"
+    },
+    "low_snr": {
+      "condition": "snr_db < 5",
+      "action": "Increase noise_reduction by one level + speech_enhancement=True"
+    },
+    "high_loudness": {
+      "condition": "rms_loudness > 0.8",
+      "action": "volume -= 2"
+    },
+    "low_loudness": {
+      "condition": "rms_loudness < 0.1",
+      "action": "volume += 2"
+    },
+    "speech_present": {
+      "condition": "speech_prob > 0.65",
+      "action": "directionality=Directional, speech_enhancement=True"
+    }
+  },
+  "tier4_rules": {
+    "severe_hearing_loss": {
+      "condition": "hearing_loss == 'severe'",
+      "action": "volume += 2, speech_enhancement=True"
+    },
+    "moderate_hearing_loss": {
+      "condition": "hearing_loss == 'moderate'",
+      "action": "volume += 1"
+    },
+    "tinnitus": {
+      "condition": "tinnitus == True",
+      "action": "noise_reduction raised by one level"
+    },
+    "elderly": {
+      "condition": "age_group == 'elderly'",
+      "action": "speech_enhancement=True"
+    },
+    "music_preference": {
+      "condition": "preference == 'music'",
+      "action": "noise_reduction relaxed by one level"
+    },
+    "speech_preference": {
+      "condition": "preference == 'speech'",
+      "action": "directionality=Directional, speech_enhancement=True"
+    }
+  },
+  "volume_clamp": {
+    "min": 1,
+    "max": 10
+  },
+  "valid_noise_levels": [
+    "Low",
+    "Medium",
+    "High"
+  ],
+  "valid_directionality": [
+    "Omnidirectional",
+    "Directional",
+    "Adaptive"
+  ]
+}

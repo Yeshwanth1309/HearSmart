@@ -293,14 +293,11 @@ def build_demo():
                 # Settings Data Table
                 rec_md    = gr.Markdown(elem_classes=["card"])
 
-        sample_dir = Path("data/UrbanSound8K/audio")
+        sample_dir = Path(__file__).parent / "samples"
         if sample_dir.exists():
-            samples = []
-            for fold in range(1, 11):
-                wavs = list((sample_dir / f"fold{fold}").glob("*.wav"))
-                if wavs: samples.append([str(wavs[0])]); break
+            samples = [[str(p)] for p in sorted(sample_dir.glob("*.wav"))[:3]]
             if samples:
-                gr.Examples(examples=samples[:3], inputs=[audio_in], label="Recent Feeds")
+                gr.Examples(examples=samples, inputs=[audio_in], label="Recent Feeds")
 
         ins  = [audio_in, hl_dd, tin_cb, age_dd, pref_dd]
         outs = [result_md, rec_md, donut_plot, bar_plot]

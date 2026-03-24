@@ -1,0 +1,45 @@
+{
+  "ensemble": {
+    "accuracy": 0.936641,
+    "macro_f1": 0.939661,
+    "weighted_f1": 0.936689,
+    "latency_ms": 120.47,
+    "weights": {
+      "rf": 0.02518,
+      "svm": 0.242266,
+      "xgb": 0.256823,
+      "cnn": 0.170578,
+      "yamnet": 0.305154
+    }
+  },
+  "individual_models": {
+    "rf": {
+      "accuracy": 0.815267,
+      "macro_f1": 0.814312,
+      "weighted_f1": 0.81499
+    },
+    "svm": {
+      "accuracy": 0.889313,
+      "macro_f1": 0.888875,
+      "weighted_f1": 0.888767
+    },
+    "xgb": {
+      "accuracy": 0.867176,
+      "macro_f1": 0.867434,
+      "weighted_f1": 0.86703
+    },
+    "cnn": {
+      "accuracy": 0.876336,
+      "macro_f1": 0.880973,
+      "weighted_f1": 0.876069
+    },
+    "yamnet": {
+      "accuracy": 0.882443,
+      "macro_f1": 0.881499,
+      "weighted_f1": 0.88225
+    }
+  },
+  "prd_target_accuracy": 0.85,
+  "prd_target_met": true,
+  "target_90_met": true
+}

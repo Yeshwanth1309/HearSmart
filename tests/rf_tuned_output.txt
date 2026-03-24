@@ -1,0 +1,164 @@
+﻿WARNING:tensorflow:From C:\Users\gyesh\Miniconda3\envs\hearing-aid\lib\site-packages\keras\src\losses.py:2976: The name tf.losses.sparse_softmax_cross_entropy is deprecated. Please use tf.compat.v1.losses.sparse_softmax_cross_entropy instead.
+System.Management.Automation.RemoteException
+2026-02-20 14:40:26,953 - INFO - src.train - ============================================================
+2026-02-20 14:40:26,954 - INFO - src.train - Phase 4 ù Step 1: Loading MFCC Training Data
+2026-02-20 14:40:26,954 - INFO - src.train - ============================================================
+2026-02-20 14:40:26,961 - INFO - src.train - Loaded split CSV: data/splits/train.csv (6112 rows)
+2026-02-20 14:40:28,837 - INFO - src.train - Saved LabelEncoder to: models/label_encoder.pkl
+2026-02-20 14:40:28,837 - INFO - src.train - 
+2026-02-20 14:40:28,837 - INFO - src.train - --- Data Summary ---
+2026-02-20 14:40:28,837 - INFO - src.train -   X shape        : (6112, 80)
+2026-02-20 14:40:28,837 - INFO - src.train -   y shape        : (6112,)
+2026-02-20 14:40:28,837 - INFO - src.train -   X dtype        : float32
+2026-02-20 14:40:28,837 - INFO - src.train -   Num classes    : 10
+2026-02-20 14:40:28,837 - INFO - src.train -   Missing files  : 0
+2026-02-20 14:40:28,837 - INFO - src.train - 
+2026-02-20 14:40:28,837 - INFO - src.train - --- Class Distribution ---
+2026-02-20 14:40:28,837 - INFO - src.train -   air_conditioner      :   700  (11.5%)
+2026-02-20 14:40:28,837 - INFO - src.train -   car_horn             :   300  (4.9%)
+2026-02-20 14:40:28,837 - INFO - src.train -   children_playing     :   700  (11.5%)
+2026-02-20 14:40:28,838 - INFO - src.train -   dog_bark             :   700  (11.5%)
+2026-02-20 14:40:28,838 - INFO - src.train -   drilling             :   700  (11.5%)
+2026-02-20 14:40:28,838 - INFO - src.train -   engine_idling        :   700  (11.5%)
+2026-02-20 14:40:28,838 - INFO - src.train -   gun_shot             :   262  (4.3%)
+2026-02-20 14:40:28,838 - INFO - src.train -   jackhammer           :   700  (11.5%)
+2026-02-20 14:40:28,838 - INFO - src.train -   siren                :   650  (10.6%)
+2026-02-20 14:40:28,838 - INFO - src.train -   street_music         :   700  (11.5%)
+2026-02-20 14:40:28,838 - INFO - src.train - 
+2026-02-20 14:40:28,838 - INFO - src.train - Step 1 complete. Data is ready for training.
+
+============================================================
+Phase 4 - Stage 4: Random Forest Hyperparameter Tuning
+============================================================
+Grid: 12 combinations x 10 folds = 120 fits
+
+Starting grid search...
+Fitting 10 folds for each of 12 candidates, totalling 120 fits
+
+============================================================
+===== TUNED RANDOM FOREST =====
+============================================================
+Best Macro F1: 0.7615
+Best Params:   {'max_depth': None, 'min_samples_split': 2, 'n_estimators': 400}
+============================================================
+Model saved to models/random_forest.pkl
+[CV] END max_depth=None, min_samples_split=2, n_estimators=400; total time=  59.8s
+[CV] END max_depth=None, min_samples_split=5, n_estimators=200; total time=  32.2s
+[CV] END max_depth=None, min_samples_split=5, n_estimators=400; total time= 1.0min
+[CV] END max_depth=20, min_samples_split=2, n_estimators=200; total time=  33.6s
+[CV] END max_depth=20, min_samples_split=2, n_estimators=400; total time= 1.0min
+[CV] END max_depth=20, min_samples_split=5, n_estimators=400; total time= 1.0min
+[CV] END max_depth=40, min_samples_split=2, n_estimators=200; total time=  30.5s
+[CV] END max_depth=40, min_samples_split=2, n_estimators=400; total time= 1.0min
+[CV] END max_depth=40, min_samples_split=5, n_estimators=200; total time=  29.8s
+[CV] END max_depth=None, min_samples_split=2, n_estimators=200; total time=  29.7s
+[CV] END max_depth=None, min_samples_split=2, n_estimators=400; total time=  59.7s
+[CV] END max_depth=None, min_samples_split=5, n_estimators=200; total time=  30.9s
+[CV] END max_depth=None, min_samples_split=5, n_estimators=400; total time= 1.1min
+[CV] END max_depth=20, min_samples_split=2, n_estimators=400; total time= 1.0min
+[CV] END max_depth=20, min_samples_split=5, n_estimators=200; total time=  31.0s
+[CV] END max_depth=20, min_samples_split=5, n_estimators=400; total time= 1.0min
+[CV] END max_depth=40, min_samples_split=2, n_estimators=400; total time= 1.0min
+[CV] END max_depth=40, min_samples_split=5, n_estimators=200; total time=  28.6s
+[CV] END max_depth=40, min_samples_split=5, n_estimators=400; total time=  43.8s
+[CV] END max_depth=None, min_samples_split=2, n_estimators=200; total time=  29.7s
+[CV] END max_depth=None, min_samples_split=2, n_estimators=400; total time= 1.0min
+[CV] END max_depth=None, min_samples_split=5, n_estimators=400; total time= 1.0min
+[CV] END max_depth=20, min_samples_split=2, n_estimators=200; total time=  35.2s
+[CV] END max_depth=20, min_samples_split=2, n_estimators=400; total time= 1.0min
+[CV] END max_depth=20, min_samples_split=5, n_estimators=200; total time=  33.6s
+[CV] END max_depth=40, min_samples_split=2, n_estimators=200; total time=  40.7s
+[CV] END max_depth=40, min_samples_split=2, n_estimators=200; total time=  31.6s
+[CV] END max_depth=40, min_samples_split=2, n_estimators=400; total time= 1.0min
+[CV] END max_depth=40, min_samples_split=5, n_estimators=400; total time=  50.9s
+[CV] END max_depth=None, min_samples_split=2, n_estimators=200; total time=  31.1s
+[CV] END max_depth=None, min_samples_split=2, n_estimators=400; total time=  59.9s
+[CV] END max_depth=None, min_samples_split=5, n_estimators=400; total time= 1.0min
+[CV] END max_depth=20, min_samples_split=2, n_estimators=200; total time=  34.1s
+[CV] END max_depth=20, min_samples_split=2, n_estimators=400; total time= 1.0min
+[CV] END max_depth=20, min_samples_split=5, n_estimators=400; total time= 1.0min
+[CV] END max_depth=40, min_samples_split=2, n_estimators=200; total time=  30.1s
+[CV] END max_depth=40, min_samples_split=2, n_estimators=400; total time= 1.1min
+[CV] END max_depth=40, min_samples_split=5, n_estimators=400; total time=  55.2s
+[CV] END max_depth=None, min_samples_split=2, n_estimators=200; total time=  30.2s
+[CV] END max_depth=None, min_samples_split=2, n_estimators=400; total time=  59.6s
+[CV] END max_depth=None, min_samples_split=5, n_estimators=200; total time=  31.2s
+[CV] END max_depth=None, min_samples_split=5, n_estimators=400; total time= 1.1min
+[CV] END max_depth=20, min_samples_split=2, n_estimators=400; total time= 1.0min
+[CV] END max_depth=20, min_samples_split=5, n_estimators=200; total time=  30.7s
+[CV] END max_depth=20, min_samples_split=5, n_estimators=400; total time= 1.0min
+[CV] END max_depth=40, min_samples_split=2, n_estimators=400; total time= 1.0min
+[CV] END max_depth=40, min_samples_split=5, n_estimators=200; total time=  28.7s
+[CV] END max_depth=40, min_samples_split=5, n_estimators=400; total time=  43.8s
+[CV] END max_depth=None, min_samples_split=2, n_estimators=200; total time=  30.3s
+[CV] END max_depth=None, min_samples_split=2, n_estimators=400; total time=  59.3s
+[CV] END max_depth=None, min_samples_split=5, n_estimators=200; total time=  33.4s
+[CV] END max_depth=20, min_samples_split=2, n_estimators=200; total time=  38.7s
+[CV] END max_depth=20, min_samples_split=2, n_estimators=200; total time=  30.4s
+[CV] END max_depth=20, min_samples_split=5, n_estimators=200; total time=  44.2s
+[CV] END max_depth=20, min_samples_split=5, n_estimators=200; total time=  31.0s
+[CV] END max_depth=20, min_samples_split=5, n_estimators=400; total time=  59.9s
+[CV] END max_depth=40, min_samples_split=2, n_estimators=400; total time= 1.1min
+[CV] END max_depth=40, min_samples_split=5, n_estimators=200; total time=  29.4s
+[CV] END max_depth=40, min_samples_split=5, n_estimators=400; total time=  47.8s
+[CV] END max_depth=None, min_samples_split=2, n_estimators=200; total time=  31.7s
+[CV] END max_depth=None, min_samples_split=2, n_estimators=400; total time=  59.9s
+[CV] END max_depth=None, min_samples_split=5, n_estimators=400; total time= 1.0min
+[CV] END max_depth=20, min_samples_split=2, n_estimators=200; total time=  33.2s
+[CV] END max_depth=20, min_samples_split=2, n_estimators=400; total time= 1.0min
+[CV] END max_depth=20, min_samples_split=5, n_estimators=400; total time= 1.0min
+[CV] END max_depth=40, min_samples_split=2, n_estimators=200; total time=  29.7s
+[CV] END max_depth=40, min_samples_split=2, n_estimators=400; total time= 1.0min
+[CV] END max_depth=40, min_samples_split=5, n_estimators=200; total time=  29.9s
+[CV] END max_depth=None, min_samples_split=2, n_estimators=200; total time=  31.2s
+[CV] END max_depth=None, min_samples_split=2, n_estimators=400; total time=  59.9s
+[CV] END max_depth=None, min_samples_split=5, n_estimators=400; total time= 1.0min
+[CV] END max_depth=20, min_samples_split=2, n_estimators=200; total time=  34.9s
+[CV] END max_depth=20, min_samples_split=2, n_estimators=400; total time= 1.0min
+[CV] END max_depth=20, min_samples_split=5, n_estimators=200; total time=  33.6s
+[CV] END max_depth=40, min_samples_split=2, n_estimators=200; total time=  41.5s
+[CV] END max_depth=40, min_samples_split=2, n_estimators=200; total time=  31.2s
+[CV] END max_depth=40, min_samples_split=5, n_estimators=200; total time=  40.4s
+[CV] END max_depth=40, min_samples_split=5, n_estimators=200; total time=  28.4s
+[CV] END max_depth=40, min_samples_split=5, n_estimators=400; total time=  47.5s
+[CV] END max_depth=None, min_samples_split=2, n_estimators=200; total time=  30.3s
+[CV] END max_depth=None, min_samples_split=2, n_estimators=400; total time=  59.6s
+[CV] END max_depth=None, min_samples_split=5, n_estimators=200; total time=  31.6s
+[CV] END max_depth=20, min_samples_split=2, n_estimators=200; total time=  36.8s
+[CV] END max_depth=20, min_samples_split=2, n_estimators=200; total time=  32.4s
+[CV] END max_depth=20, min_samples_split=5, n_estimators=200; total time=  44.9s
+[CV] END max_depth=20, min_samples_split=5, n_estimators=200; total time=  32.4s
+[CV] END max_depth=20, min_samples_split=5, n_estimators=400; total time=  59.0s
+[CV] END max_depth=40, min_samples_split=2, n_estimators=400; total time= 1.1min
+[CV] END max_depth=40, min_samples_split=5, n_estimators=200; total time=  28.5s
+[CV] END max_depth=40, min_samples_split=5, n_estimators=400; total time=  48.0s
+[CV] END max_depth=None, min_samples_split=2, n_estimators=200; total time=  33.4s
+[CV] END max_depth=None, min_samples_split=5, n_estimators=200; total time=  44.0s
+[CV] END max_depth=None, min_samples_split=5, n_estimators=200; total time=  33.8s
+[CV] END max_depth=None, min_samples_split=5, n_estimators=400; total time=  56.7s
+[CV] END max_depth=20, min_samples_split=2, n_estimators=400; total time= 1.1min
+[CV] END max_depth=20, min_samples_split=5, n_estimators=200; total time=  30.1s
+[CV] END max_depth=20, min_samples_split=5, n_estimators=400; total time=  59.7s
+[CV] END max_depth=40, min_samples_split=2, n_estimators=200; total time=  31.4s
+[CV] END max_depth=40, min_samples_split=2, n_estimators=400; total time= 1.1min
+[CV] END max_depth=40, min_samples_split=5, n_estimators=400; total time=  50.0s
+[CV] END max_depth=None, min_samples_split=2, n_estimators=200; total time=  32.0s
+[CV] END max_depth=None, min_samples_split=5, n_estimators=200; total time=  44.1s
+[CV] END max_depth=None, min_samples_split=5, n_estimators=200; total time=  33.1s
+[CV] END max_depth=None, min_samples_split=5, n_estimators=400; total time=  57.4s
+[CV] END max_depth=20, min_samples_split=2, n_estimators=400; total time= 1.1min
+[CV] END max_depth=20, min_samples_split=5, n_estimators=200; total time=  31.1s
+[CV] END max_depth=20, min_samples_split=5, n_estimators=400; total time= 1.0min
+[CV] END max_depth=40, min_samples_split=2, n_estimators=200; total time=  32.6s
+[CV] END max_depth=40, min_samples_split=5, n_estimators=200; total time=  40.6s
+[CV] END max_depth=40, min_samples_split=5, n_estimators=200; total time=  29.1s
+[CV] END max_depth=40, min_samples_split=5, n_estimators=400; total time=  45.6s
+[CV] END max_depth=None, min_samples_split=2, n_estimators=400; total time=  58.7s
+[CV] END max_depth=None, min_samples_split=5, n_estimators=200; total time=  33.6s
+[CV] END max_depth=None, min_samples_split=5, n_estimators=400; total time= 1.0min
+[CV] END max_depth=20, min_samples_split=2, n_estimators=200; total time=  33.6s
+[CV] END max_depth=20, min_samples_split=2, n_estimators=400; total time= 1.0min
+[CV] END max_depth=20, min_samples_split=5, n_estimators=400; total time= 1.0min
+[CV] END max_depth=40, min_samples_split=2, n_estimators=200; total time=  29.7s
+[CV] END max_depth=40, min_samples_split=2, n_estimators=400; total time= 1.0min
+[CV] END max_depth=40, min_samples_split=5, n_estimators=400; total time=  56.1s

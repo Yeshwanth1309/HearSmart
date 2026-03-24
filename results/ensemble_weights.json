@@ -1,0 +1,14 @@
+{
+  "weights": {
+    "rf": 0.02518,
+    "svm": 0.242266,
+    "xgb": 0.256823,
+    "cnn": 0.170578,
+    "yamnet": 0.305154
+  },
+  "val_accuracy": 0.946565,
+  "val_macro_f1": 0.947703,
+  "optimiser": "Nelder-Mead",
+  "n_restarts": 30,
+  "objective": "accuracy + 0.5 * macro_f1"
+}
