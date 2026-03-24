@@ -206,10 +206,16 @@ class HearSmartV3Engine:
         safety_classifier_prob: float,
         safety_scores: dict,
         cnn_probs: np.ndarray,
+        yamnet_probs: np.ndarray,       # NEW: fine-tuned 8-class head output
     ) -> tuple:
         """
         Require SAFETY_FRAMES_REQUIRED consecutive frames of safety detection.
         Exception: immediate trigger if safety_classifier_prob > HIGH_CONF threshold.
+
+        Condition 4 (real-audio fix): YAMNet fine-tuned 8-class head confidently
+        predicting siren/horn is a strong signal — include it in fusion.
+        Real sirens score 72-98% on the fine-tuned head even when raw 521-class
+        scores are ambiguous.
 
         Returns:
             (trigger_now: bool, source: str, raw_detected: bool)
@@ -224,17 +230,29 @@ class HearSmartV3Engine:
         if safety_classifier_prob >= SAFETY_CLASSIFIER_THRESHOLD:
             sources.append("safety_model")
 
-        # Condition 2: YAMNet raw scores with calibrated thresholds
+        # Condition 2: YAMNet raw 521-class scores with calibrated thresholds
         if safety_scores["siren"] > YAMNET_SIREN_THRESHOLD:
             sources.append("yamnet_siren")
         if safety_scores["horn"] > YAMNET_HORN_THRESHOLD:
             sources.append("yamnet_horn")
 
-        # Condition 3: CNN 8-class probs
+        # Condition 3: CNN 8-class probs (raised to 0.65 post-audit to stop
+        # church-bells false alarms — CNN fires on bell harmonics at 0.55)
         if cnn_probs[siren_idx_8] > CNN_SIREN_THRESHOLD:
             sources.append("cnn_siren")
         if cnn_probs[horn_idx_8] > CNN_HORN_THRESHOLD:
             sources.append("cnn_horn")
+
+        # Condition 4: YAMNet fine-tuned 8-class HEAD (real-audio fix)
+        # The fine-tuned head was trained on UrbanSound8K + ESC-50 real audio.
+        # When it predicts siren/horn with >= 50% confidence, that's a reliable
+        # signal — use a LOWER threshold than CNN (0.50 vs 0.65) because the
+        # YAMNet head specialises on our exact 8-class taxonomy.
+        YAMNET_HEAD_SAFETY_THRESHOLD = 0.50
+        if yamnet_probs[siren_idx_8] >= YAMNET_HEAD_SAFETY_THRESHOLD:
+            sources.append("yamnet_head_siren")
+        if yamnet_probs[horn_idx_8] >= YAMNET_HEAD_SAFETY_THRESHOLD:
+            sources.append("yamnet_head_horn")
 
         raw_detected = len(sources) > 0
 
@@ -377,9 +395,9 @@ class HearSmartV3Engine:
         # H1+H2: Extract calibrated safety scores with traffic guard
         safety_scores = self._extract_safety_scores(yamnet_raw_scores)
 
-        # Step 3: H3 Safety duration check (replaces old triple_safety_check)
+        # Step 3: H3 Safety duration check with all 4 conditions
         trigger_safety, safety_source, raw_safety = self._safety_duration_check(
-            safety_prob, safety_scores, cnn_probs
+            safety_prob, safety_scores, cnn_probs, yamnet_probs
         )
 
         # Debug: YAMNet raw top-3 and CNN top-3

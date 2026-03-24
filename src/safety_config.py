@@ -88,8 +88,8 @@ YAMNET_HORN_THRESHOLD  = 0.15   # recall priority — do not raise above 0.25
 # causing false overrides. YAMNet is more reliable for non-safety classes.
 # At 0.55 CNN only contributes when it's very confident — reduces false alarms
 # without losing recall (YAMNet raw scores still catch real sirens/horns).
-CNN_SIREN_THRESHOLD = 0.55   # raised from 0.40 post-audit
-CNN_HORN_THRESHOLD  = 0.55   # raised from 0.40 post-audit
+CNN_SIREN_THRESHOLD = 0.65   # raised from 0.55 (church bells fire at 0.64)
+CNN_HORN_THRESHOLD  = 0.65   # raised from 0.55 (church bells fire at 0.64)
 
 # Safety binary classifier threshold
 SAFETY_CLASSIFIER_THRESHOLD = 0.50
