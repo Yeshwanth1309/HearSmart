@@ -1,0 +1,9 @@
+{
+  "weights": {
+    "cnn": 0.30,
+    "yamnet": 0.70
+  },
+  "model_order": ["cnn", "yamnet"],
+  "version": "3.0",
+  "description": "2-model ensemble weights for V3 — RF/SVM/XGB removed. YAMNet primary (70%), AudioCNN secondary (30%)."
+}
